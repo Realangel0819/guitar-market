@@ -1,4 +1,4 @@
-package com.guitarmarket.user;
+package com.guitarmarket.domain.user;
 
 public enum Role {
     USER,
