@@ -19,10 +19,24 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    // 웹
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    // JPA
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    // Lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.projectlombok:lombok")
+
+    // DB (지금은 H2로 충분)
+    runtimeOnly("com.h2database:h2")
+
+    // Test
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
+
 
 tasks.withType<Test> {
 	useJUnitPlatform()
