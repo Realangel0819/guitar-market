@@ -1,7 +1,7 @@
 package com.guitarmarket.domain.post;
 
 public enum SaleStatus {
-    SALE,
+    ON_SALE,
     RESERVED,
-    SOLD
+    SOLD_OUT
 }

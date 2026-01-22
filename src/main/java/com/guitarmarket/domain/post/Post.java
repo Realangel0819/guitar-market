@@ -4,11 +4,12 @@ import com.guitarmarket.domain.product.Product;
 import com.guitarmarket.domain.user.User;
 import com.guitarmarket.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "post")
 public class Post extends BaseTimeEntity {
@@ -18,12 +19,10 @@ public class Post extends BaseTimeEntity {
     @Column(name = "post_id")
     private Long id;
 
-    // 작성자
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    // 상품 정보 (커뮤니티 글은 NULL)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id")
     private Product product;
@@ -43,11 +42,33 @@ public class Post extends BaseTimeEntity {
     private SaleStatus saleStatus;
 
     @Column(nullable = false)
-    private boolean isNotice = false;
+    private boolean isNotice;
 
     @Column(nullable = false)
-    private int viewCount = 0;
+    private int viewCount;
 
     @Column
     private java.time.LocalDateTime deletedAt;
+
+    /* ================= 생성 로직 ================= */
+    public static Post create(
+            User user,
+            Product product,
+            PostType postType,
+            String region,
+            String locationDetail,
+            SaleStatus saleStatus,
+            boolean isNotice
+    ) {
+        Post post = new Post();
+        post.user = user;
+        post.product = product;
+        post.postType = postType;
+        post.region = region;
+        post.locationDetail = locationDetail;
+        post.saleStatus = saleStatus;
+        post.isNotice = isNotice;
+        post.viewCount = 0;
+        return post;
+    }
 }

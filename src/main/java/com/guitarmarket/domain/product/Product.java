@@ -29,4 +29,19 @@ public class Product extends BaseTimeEntity {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
+     // ✅ 생성 메서드
+    public static Product create(
+            Category category,
+            String brand,
+            String modelName,
+            String description
+    ) {
+        Product product = new Product();
+        product.category = category;
+        product.brand = brand;
+        product.modelName = modelName;
+        product.description = description;
+        return product;
+    }
 }
