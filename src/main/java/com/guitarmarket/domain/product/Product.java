@@ -1,5 +1,7 @@
 package com.guitarmarket.domain.product;
 
+import java.time.LocalDateTime;
+
 import com.guitarmarket.domain.category.Category;
 import com.guitarmarket.global.entity.BaseTimeEntity;
 import jakarta.persistence.*;
@@ -29,6 +31,9 @@ public class Product extends BaseTimeEntity {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Column
+    private LocalDateTime deletedAt;
 
      // ✅ 생성 메서드
     public static Product create(

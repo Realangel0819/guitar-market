@@ -36,4 +36,7 @@ public class ChatRoom {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
+
+    @Column
+    private LocalDateTime deletedAt;
 }

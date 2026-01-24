@@ -24,6 +24,9 @@ dependencies {
     // JPA
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+    // Validation
+    implementation("org.springframework.boot:spring-boot-starter-validation")
+
     // MySQL
     runtimeOnly("com.mysql:mysql-connector-j")
 

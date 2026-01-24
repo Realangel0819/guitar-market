@@ -44,4 +44,7 @@ public class Transaction extends BaseTimeEntity {
 
     @Column
     private LocalDateTime completedAt;
+
+    @Column
+    private LocalDateTime deletedAt;
 }

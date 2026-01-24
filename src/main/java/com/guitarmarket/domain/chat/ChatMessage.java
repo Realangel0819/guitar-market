@@ -34,4 +34,10 @@ public class ChatMessage {
 
     @Column(nullable = false)
     private LocalDateTime sentAt;
+
+    @Column
+    private LocalDateTime readAt;
+
+    @Column
+    private LocalDateTime deletedAt;
 }
